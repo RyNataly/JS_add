@@ -1,6 +1,6 @@
 'use strict';
 // Загадывание случайного числа от 1 до 100
-
+let atTempt = 10
 let secretNumber
 
 const isNumber = function(num) {   
@@ -8,7 +8,7 @@ const isNumber = function(num) {
     return !isNaN(parseFloat(num)) && isFinite(num);
 }
 
-const asking = function(secret) {  
+const asking = function(secret, attempt) {  
 
     const checkNum = function(){
 
@@ -21,21 +21,35 @@ const asking = function(secret) {
               alert("Введи число!");
               checkNum();
         }
-
+        
+        attempt--
+        if (attempt === 0){
+            if (confirm ("Вы неугадали число и у вас закончились попытки! Хотите сыграть еще?")){
+                asking(Math.round(Math.random()*100), atTempt);
+            } else{
+                alert("Игра окончена");
+                return;
+            } 
+        }
         if (num < secret) {
-            alert("Загаданное число больше");
+            alert("Загаданное число больше! \nОсталось попыток: " + attempt);
             checkNum();
         } else if (num > secret) {
-            alert("Загаданное число меньше");
+            alert("Загаданное число меньше! \nОсталось попыток: " + attempt);
             checkNum();
         } else {
-            alert("Поздравляю, Вы угадали!!!");
+            if (confirm ("Поздравляю, Вы угадали!!! Хотите сыграть еще?")){
+                asking(Math.round(Math.random()*100), atTempt);
+            } else{
+                alert("Игра окончена");
+                return;
+            } 
         }
+        attempt--;
     }    
     checkNum();   
 }    
 
 secretNumber = Math.round(Math.random()*100);
-asking(secretNumber);
+asking(secretNumber, atTempt);
 
-console.log(secretNumber);
