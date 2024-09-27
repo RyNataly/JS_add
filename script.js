@@ -1,26 +1,41 @@
 'use strict';
+// Загадывание случайного числа от 1 до 100
 
-let num
+let secretNumber
 
 const isNumber = function(num) {   
 
     return !isNaN(parseFloat(num)) && isFinite(num);
 }
 
-const asking = function() {
-  do { 
-      num = +prompt("Введите число").trim(); 
-  }
-  while (!isNumber(num)) 
-}
+const asking = function(secret) {  
 
-const myInt = function () { 
+    const checkNum = function(){
 
-  for (let i = 0; i < 7; i++){
-    if (String(arr[i]).split('')[0] === "2" || String(arr[i]).split('')[0] === "4"){
-      console.log(arr[i]);
-    }
-  }
-}
+        let num
+        num = prompt("Угадай число от 1 до 100");
+        if (num === null) {
+              alert("Игра окончена");
+              return ;
+        } else if (!isNumber(num)){
+              alert("Введи число!");
+              checkNum();
+        }
 
+        if (num < secret) {
+            alert("Загаданное число больше");
+            checkNum();
+        } else if (num > secret) {
+            alert("Загаданное число меньше");
+            checkNum();
+        } else {
+            alert("Поздравляю, Вы угадали!!!");
+        }
+    }    
+    checkNum();   
+}    
 
+secretNumber = Math.round(Math.random()*100);
+asking(secretNumber);
+
+console.log(secretNumber);
