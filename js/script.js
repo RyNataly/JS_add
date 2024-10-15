@@ -42,8 +42,9 @@ const render = function() {
     toDoData.splice(index, 1);
   }
 
-  localStorage.setItem('toDO', JSON.stringify(toDoData)) 
-  console.log(JSON.stringify(toDoData))
+  // localStorage.setItem('toDO', JSON.stringify(toDoData)) 
+  setData('toDo', toDoData);
+  // console.log(JSON.stringify(toDoData))
 }
 
 todoControl.addEventListener('submit', function (event){
@@ -65,12 +66,16 @@ todoControl.addEventListener('submit', function (event){
     }
 })
 
+const getData = (key) => JSON.parse(localStorage.getItem(key)) || [];
+
+const setData = (key, value) => localStorage.setItem(key, JSON.stringify(value));
+
 const start = function() {
-    let storage = localStorage.getItem('toDO')
-    console.log(storage)
-    if (storage !==''){
-        toDoData = JSON.parse(storage)
-        console.log(toDoData)
+    // let storage = localStorage.getItem('toDO')
+    const storage = getData('toDo');
+    if (storage !=='' && storage !== null){
+        // toDoData = JSON.parse(storage)
+        toDoData = storage
         render()
     }
 }
