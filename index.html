@@ -6,13 +6,101 @@
 	<meta name="viewport"
 		content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Функция конструктор</title>
+	<title>Списки персонала</title>
+	<link rel="stylesheet" href="style.css">
 
 	<script src="script.js" defer></script>
 </head>
 
 <body>
+<div class = "form-wrap">
+<div class = "form">
+ <fieldset>
+		<legend>Персонал</legend>
+		<div>
+			<label for="name">Имя</label>
+			<input type = "text" name = "name" required>
+		</div>
+		<div>
+			<label>Возраст</label>
+			<input type ="text" name = "age" required>
+	  </div>
+		<div>
+			<label>Стаж</label>
+			<input type = "text" name = "exp" required>
+		</div>
+		<div>
+			<label>Адрес</label>
+			<input type = "text" name = "address" required>
+		</div>
+		<div>
+			<label for="person">Тип персонала</label>
+			<select name="person">Выберите тип персонала
+				<option value="" selected>Выберите тип персонала</option>
+				<option value="worker">worker</option>
+				<option value="staff">staff</option>
+			</select>
+			<div class="select-arrow"></div>
+		</div>
+	</fieldset>
+	<fieldset class = "person" style = "display: none;">
+			<legend>Рабочий</legend>
+			<div>
+				<label>Должность</label>
+				<input type = "text" name = "func" >
+			</div>
+			<div>
+				<input type="checkbox" name="child" id="checkbox-1">
+				<label for="checkbox-1">Наличие детей</label>
+			</div>
+	</fieldset>
+	<fieldset class = "person" style = "display: none;">
+			<legend>Служащий</legend>
+			<div>
+				<label>Звание</label>
+				<input type = "text" name = "rank" >
+			</div>
+			<div>
+				<label for="checkbox-2">Женат/замужем</label>
+				<input type="checkbox" name="married" id="checkbox-2">
+			</div>
+	</fieldset>
+	<button class="add">Сохранить</button>
+</div>
+</div>
 
+	<table>
+		<caption>Список персонала</caption>
+		<thead>
+			<tr>
+				<th>Тип</th>
+				<th>Имя</th>
+				<th>Возраст</th>
+				<th>Стаж</th>
+				<th>Адрес</th>
+				<th>Должность</th>
+				<th>Дети</th>
+				<th>Звание</th>
+				<th>Женат/Замужем</th>
+				<th> </th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="record">
+				<td>Hi, </td>
+				<td>I'm</td>
+				<td>I'm </td>
+				<td>I'm </td>
+				<td>I'm </td>
+				<td>I'm </td>
+				<td>I'm </td>
+				<td>I'm </td>
+				<td>I'm </td>
+				<td><button class="del">Удалить</button></td>
+			</tr>
+			</tr>
+		</tbody>
+	</table>
 
 </body>
 
