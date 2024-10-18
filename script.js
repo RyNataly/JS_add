@@ -27,7 +27,9 @@ let employeeAll = []
 const start = function(){
 
         butSelect.addEventListener('click', selectEmployee)   
-        butSubmit.addEventListener('click', addEmployee)  
+        butSubmit.addEventListener('click', addEmployee) 
+        employeeAll = getData('employee') 
+        printAll()
 }
 const selectEmployee = function() {
         if (butSelect.value === 'worker') {
@@ -78,6 +80,7 @@ const addEmployee = function() {
              printAll() 
            }
 
+           setData('employee',employeeAll)
     /*     records = document.querySelectorAll('.record')
          const cloneRecord = records[0].cloneNode(true)
          records[records.length-1].before(cloneRecord)
@@ -99,6 +102,7 @@ const delEmployee = function() {
     delete employeeAll[this.id];
     console.log(employeeAll)
     printAll()
+    setData('employee',employeeAll)
 
 }
 const printAll = function () {
@@ -184,6 +188,9 @@ const printAll = function () {
     });
 }
 
+const setData = (key, value) => localStorage.setItem(key, JSON.stringify(value));
+
+const getData = (key) => JSON.parse(localStorage.getItem(key)) || [];
 
  class Employee {
     constructor (name, age, experience, address){
